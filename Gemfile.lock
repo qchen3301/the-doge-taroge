@@ -47,6 +47,7 @@ GEM
       msgpack (~> 1.0)
     builder (3.2.3)
     byebug (10.0.2)
+    certified (1.0.0)
     concurrent-ruby (1.1.1)
     crass (1.0.4)
     erubi (1.7.1)
@@ -127,6 +128,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.1.0)
   byebug
+  certified
   httparty
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)
