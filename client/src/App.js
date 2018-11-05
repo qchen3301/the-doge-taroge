@@ -1,28 +1,31 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import Axios from 'axios'
 
-class App extends Component {
+
+export default class App extends Component {
+  state = {
+    cards: []
+  }
+
+  componentDidMount(){
+    this.getCards()
+  }
+
+  getCards = async () => {
+    const response = await Axios.get('https://rws-cards-api.herokuapp.com/api/v1/cards/random?n=3', {withCredentials: true})
+    await this.setState({cards: response.data})
+    console.log("test test test")
+    console.log('this is my data' + response.data)
+    return response.data
+    
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        {this.state.cards}
       </div>
-    );
+    )
   }
 }
 
-export default App;
