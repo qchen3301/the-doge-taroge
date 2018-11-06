@@ -5,3 +5,20 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+#create a user
+
+user_one = User.create(
+    name: 'Doge'
+)
+
+#create a spread
+
+spread_test = Spread.create(
+    user_id: user_one.id,
+    date: "06-NOV-2018",
+    notes: "(wow) much card so fortune"
+)
+
+
+#create two cards to a user's spread

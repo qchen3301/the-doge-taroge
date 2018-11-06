@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Axios from 'axios'
+import axios from 'axios'
 
 
 export default class App extends Component {
@@ -12,18 +12,15 @@ export default class App extends Component {
   }
 
   getCards = async () => {
-    const response = await Axios.get('https://rws-cards-api.herokuapp.com/api/v1/cards/random?n=3', {withCredentials: true})
+    const response = await axios.get('https://rws-cards-api.herokuapp.com/api/v1/cards/random?n=3')
     await this.setState({cards: response.data})
-    console.log("test test test")
-    console.log('this is my data' + response.data)
-    return response.data
-    
   }
 
   render() {
     return (
       <div>
-        {this.state.cards} Hello this is a placeholder for D O G E T A R O T
+        {this.state.cards} 
+        <h1>Hello this is a placeholder for D O G E T A R O T</h1>
       </div>
     )
   }
