@@ -23,7 +23,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        {this.state.cards}
+        {this.state.cards} Hello this is a placeholder for D O G E T A R O T
       </div>
     )
   }
