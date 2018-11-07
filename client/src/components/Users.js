@@ -8,10 +8,10 @@ export default class Users extends Component {
     }
 
     componentDidMount = async () => {
-        await this.getUsers()
+        await this.fetchUsers()
     }
 
-    getUsers = async() => {
+    fetchUsers = async() => {
         const response = await axios.get('/api/users')
         this.setState({users: response.data})
     }
