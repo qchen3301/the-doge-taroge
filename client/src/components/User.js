@@ -22,7 +22,7 @@ export default class User extends Component {
       const spreadsContent = this.state.spreads.map((spread, i) => {
           return(
               <div key={i}>
-              <p>{spread.date}</p>
+              <p><Link to={`/users/${this.props.match.params.id}/spreads/${spread.id}`}>{spread.date}</Link></p>
               <p>{spread.notes}</p>
               </div>
           )
