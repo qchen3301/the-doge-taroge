@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import Axios from 'axios';
+import axios from 'axios'
+import {Link} from 'react-router-dom'
+
 
 export default class User extends Component {
     state = {
@@ -13,7 +15,7 @@ export default class User extends Component {
     }
 
     fetchSpreads = async (userId) => {
-        const response = await Axios.get(`/api/users/${userId}/spreads`)
+        const response = await axios.get(`/api/users/${userId}/spreads`)
         return response.data
     }
   render() {
