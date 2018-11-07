@@ -1,15 +1,14 @@
 class Api::CardsController < ApplicationController
     def index
-        @user = User.find(params[:user_id])
-        @spreads = @user.spreads
+        @spreads = Spread.find(params[:spread_id])
         @cards = @spreads.cards
         render json: @cards
     end
 
     def show 
-        # @spread = Spread.find(params[:id])
-        # @user = @spread.user
-        # render json: @spread
+        @card = Card.find(params[:id])
+        # @spread = @card.spread_id
+        render json: @card
     end
 
     def create
