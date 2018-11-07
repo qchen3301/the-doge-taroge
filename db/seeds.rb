@@ -12,18 +12,21 @@ user_one = User.create(
     name: 'Doge'
 )
 
-user_one.spreads << Spread.create(
-    date: "06-NOV-2018",
-    notes: "second spread (heck) so spread much code"
-)
+# #create a spread (or spreads) - two ways
 
-# #create a spread (or spreads)
-
+#create a new spread and manually enter in its parent's id
 spread_test = Spread.create(
     user_id: user_one.id,
     date: "06-NOV-2018",
     notes: "(wow) much card so fortune"
 )
 
+# Use "shovel" ('<<') method can be used to append data into the end of an array"
+user_one.spreads << Spread.create(
+    date: "06-NOV-2018",
+    notes: "second spread (heck) so spread much code"
+)
 
 #create two cards to a user's spread
+
+user_one.spreads.first << Card.draw_two()

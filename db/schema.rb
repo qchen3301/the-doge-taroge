@@ -16,9 +16,9 @@ ActiveRecord::Schema.define(version: 2018_11_05_212709) do
   enable_extension "plpgsql"
 
   create_table "cards", force: :cascade do |t|
-    t.bigint "spread_id",
-    t.string "card_name",
-    t.string "arcana",
+    t.bigint "spread_id"
+    t.string "card_name"
+    t.string "arcana"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["spread_id"], name: "index_cards_on_spread_id"
@@ -39,6 +39,6 @@ ActiveRecord::Schema.define(version: 2018_11_05_212709) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "cards", "spreads"
+  # add_foreign_key "cards", "spreads"
   add_foreign_key "spreads", "users"
 end
