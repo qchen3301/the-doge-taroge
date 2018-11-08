@@ -20,6 +20,11 @@ export default class Spread extends Component {
     return response.data
   }
 
+  // drawTwoCards = async () => {
+  //   const res = await axios.get(`/api/users/${userId}/spreads/${spreadId}/cards/${cardId}/draw_two`)
+  //   const send = await axios.create(`/api/users/${userId}/spreads/${spreadId}/cards`)
+  //   return res.data
+  // }
   render() {
     const cardsContent = this.state.cards.map((card, i)=> {
       return(
@@ -32,7 +37,9 @@ export default class Spread extends Component {
     return (
       <div>
         Hello world from spread! Here are your cards: <br/>
-        {cardsContent}
+        {cardsContent} 
+        ----<br/>
+        Delete this spread
       </div>
     )
   }
