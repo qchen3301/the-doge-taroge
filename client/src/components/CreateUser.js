@@ -3,7 +3,9 @@ import axios from 'axios'
 
 export default class CreateUser extends Component {
     state = {
-        newUser = {}
+        newUser: {
+            name: ''
+        }
     }
 
     handleChange = (event) => {
