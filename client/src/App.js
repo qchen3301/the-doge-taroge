@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Users from './components/Users'
 import User from './components/User'
 import Spread from './components/Spread'
-import CreateUser from './components/CreateUser';
+import CreateUser from './components/CreateUser'
 
 export default class App extends Component {
 
