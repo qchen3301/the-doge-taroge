@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Users from './components/Users'
 import User from './components/User'
 import Spread from './components/Spread'
+import CreateUser from './components/CreateUser';
 
 export default class App extends Component {
 
@@ -14,6 +15,7 @@ export default class App extends Component {
            <Route exact path='/' component={Users}/>
            <Route exact path='/users/:id' component={User}/>
            <Route exact path='/users/:userId/spreads/:id' component={Spread}/>
+           <Route exact path='/createUser' component={CreateUser}/>
          </Switch>
        </Router>
 

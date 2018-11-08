@@ -29,6 +29,7 @@ export default class Users extends Component {
         <h1>Hello from Users.js component</h1>
         <h2>Here is a list of all users</h2>
         {usersContent}
+        <b><Link to="/CreateUser">Click Here To Create A User</Link></b>
       </div>
     )
   }
