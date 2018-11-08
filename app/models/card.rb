@@ -15,8 +15,8 @@ class Card < ApplicationRecord
     response = OpenStruct.new(get('/random?n=3'))
     Card.create!([
       {card_name: response.cards[0]["name"], arcana: response.cards[0]["type"]},
-      {card_name: response.card[1]["name"], arcana: response.cards[1]["type"]},
-      {card_name: response.card[2]["name"], arcana: response.cards[2]["type"]}
+      {card_name: response.cards[1]["name"], arcana: response.cards[1]["type"]},
+      {card_name: response.cards[2]["name"], arcana: response.cards[2]["type"]}
     ])
   end
 
