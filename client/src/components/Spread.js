@@ -9,22 +9,28 @@ export default class Spread extends Component {
   async componentDidMount(){
     const userId = this.props.match.params.id
     const spreadId = this.props.match.params.userId
-
-    // const cards = await this.fetchCards(userId, spreadId)
-
-    // this.setState({cards})
-
+    const cards = await this.fetchCards(userId, spreadId)
+    this.setState({cards})
   }
+
   fetchCards = async (userId, spreadId) => {
     const response = await axios.get(`/api/users/${userId}/spreads/${spreadId}/cards`)
-    console.log("what in tarnation" + response.data)
     return response.data
   }
 
   render() {
+    const cardsContent = this.state.cards.map((card, i)=> {
+      return(
+        <div key={i}>
+          <h2>{card.card_name}</h2>
+          <h3>{card.arcana} arcana</h3>
+        </div>
+      )
+    })
     return (
       <div>
-        Hello world from spread!
+        Hello world from spread! Here are your cards: <br/>
+        {cardsContent}
       </div>
     )
   }

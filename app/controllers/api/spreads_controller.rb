@@ -17,7 +17,8 @@ class Api::SpreadsController < ApplicationController
         render json: @spread
     end
 
-    # update route is created but end user should not have the ability to update previously drawn spreads
+    #   update route is defined here but end-user should NOT 
+    #   have the ability to update previously drawn spreads
     def update
         @spread = Spread.find(params[:id])
         @spread.update(spread_params)
