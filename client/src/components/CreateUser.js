@@ -16,7 +16,9 @@ export default class CreateUser extends Component {
 
     handleSubmit = async (event) => {
         event.preventDefault()
-        const response = await axios.post(`/api/users`, this.state.newUser)
+        alert("User Created")
+        window.history.back()
+        return await axios.post(`/api/users`, this.state.newUser)
     }
 
   render() {
