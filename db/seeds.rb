@@ -30,3 +30,4 @@ user_one.spreads << Spread.create(
 #create two cards to a user's spread
 
 user_one.spreads.first.cards << Card.draw_two()
+user_one.spreads.second.cards << Card.draw_four()

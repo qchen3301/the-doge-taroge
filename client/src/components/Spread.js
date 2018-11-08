@@ -3,13 +3,15 @@ import axios from 'axios'
 
 export default class Spread extends Component {
   state = {
+    user: [],
     cards: []
   }
 
   async componentDidMount(){
-    const userId = this.props.match.params.id
-    const spreadId = this.props.match.params.userId
+    const userId = this.props.match.params.userId
+    const spreadId = this.props.match.params.id
     const cards = await this.fetchCards(userId, spreadId)
+
     this.setState({cards})
   }
 

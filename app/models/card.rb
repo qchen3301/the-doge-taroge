@@ -1,5 +1,5 @@
 class Card < ApplicationRecord
-  # belongs_to :spread <- if this is commented back in then the methods below cannot execute unless they are chained to a specific spread
+  # belongs_to :spread # <- if this is commented back in then the methods below cannot execute unless they are chained to a specific spread
   include HTTParty
   base_uri 'https://rws-cards-api.herokuapp.com/api/v1/cards'
 
