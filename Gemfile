@@ -34,7 +34,8 @@ gem 'httparty'
 # Work around SSL blocks
 gem 'certified'
 
-
+# Neater console output
+gem 'hirb'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

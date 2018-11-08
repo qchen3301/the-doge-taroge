@@ -15,17 +15,17 @@ class Api::CardsController < ApplicationController
     #   have the ability to 'create' their own cards - these are drawn 
     #   from the external api
     def create
-        @spread = Spread.find(params[:user_id])
-        @cards = @spreads.cards.create(card_params)
-        render json: @spread
+        # @spread = Spread.find(params[:user_id])
+        # @cards = @spreads.cards.create(card_params)
+        # render json: @spread
     end
 
     #   update route is defined here but end-user should NOT 
     #   have the ability to update previously drawn cards
-    #   update will
     def update
-        @card = Card.draw_two
-        render json: @card
+        # @card = Card.find(params[:id])
+        # @card.update(card_params)
+        # render json: @card
     end
 
     #   delete route is defined here but end-users should NOT
@@ -35,7 +35,26 @@ class Api::CardsController < ApplicationController
         # render json: 200
     end
 
+    def draw_two
+        @cards = Card.draw_two
+        render json: @cards
+    end
 
+    def draw_three
+        @cards = Card.draw_three
+        render json: @cards
+    end
+
+    def draw_four
+        @cards = Card.draw_four
+        render json: @cards
+    end
+
+    def draw_five
+        @cards = Card.draw_five
+        render json: @cards
+    end
+    
     private
 
     def cards_params

@@ -53,6 +53,7 @@ GEM
     erubi (1.7.1)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    hirb (0.7.3)
     httparty (0.16.2)
       multi_xml (>= 0.5.2)
     i18n (1.1.1)
@@ -129,6 +130,7 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   byebug
   certified
+  hirb
   httparty
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)
