@@ -8,7 +8,8 @@ export default class User extends Component {
         spreads: [],
         newSpread: {
             date: '',
-            notes: ''
+            notes: '',
+            cards:[]
         }
     }
     async componentDidMount(){
@@ -30,21 +31,16 @@ export default class User extends Component {
     }
 
     handleSubmit = async (event) => {
-        try {
         const userId = this.props.match.params.id
         event.preventDefault()
         // alert("New Spread!")
         const newSpread = await axios.post(`/api/users/${userId}/spreads`, this.state.newSpread)
-        // console.log(newSpread)
         const cards = await axios.get(`/api/users/${newSpread.data.user_id}/spreads/${newSpread.data.id}/draw_two`)
-        // console.log(cards)
         newSpread.data.cards = cards.data
         console.log(newSpread)
-        // return newSpread
-        } catch (error) {
-            console.log(error)
+        this.setState({newSpread: newSpread.data})
+        this.state.spreads.push(this.state.newSpread)
         }
-    }
 
   render() {
       const spreadsContent = this.state.spreads.map((spread, i) => {
@@ -86,5 +82,5 @@ export default class User extends Component {
         {spreadsContent}
       </div>
     )
-  }
+    }
 }

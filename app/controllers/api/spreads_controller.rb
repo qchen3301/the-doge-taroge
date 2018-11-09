@@ -36,9 +36,25 @@ class Api::SpreadsController < ApplicationController
         render json: @cards
     end
 
+    def draw_three
+        @cards = Card.draw_three
+        render json: @cards
+    end
+
+    def draw_four
+        @cards = Card.draw_four
+        render json: @cards
+    end
+
+    def draw_five
+        @cards = Card.draw_five
+        render json: @cards
+    end
+
     private
 
     def spread_params
         params.require(:spread).permit(:date, :notes)
     end
+    
 end
