@@ -4,7 +4,8 @@ import axios from 'axios'
 export default class Spread extends Component {
   state = {
     user: [],
-    cards: []
+    cards: [],
+    newCards: []
   }
 
   async componentDidMount(){
@@ -20,11 +21,10 @@ export default class Spread extends Component {
     return response.data
   }
 
-  // drawTwoCards = async () => {
-  //   const res = await axios.get(`/api/users/${userId}/spreads/${spreadId}/cards/${cardId}/draw_two`)
-  //   const send = await axios.create(`/api/users/${userId}/spreads/${spreadId}/cards`)
-  //   return res.data
-  // }
+  drawTwo = async (userId, spreadId) => {
+    // event.preventDefault()
+    const newSpread = await axios.post(`/api/users/${userId}/spreads/${spreadId}/draw_two`, this.state.newCards)
+  }
   render() {
     const cardsContent = this.state.cards.map((card, i)=> {
       return(
@@ -38,6 +38,7 @@ export default class Spread extends Component {
       <div>
         Hello world from spread! Here are your cards: <br/>
         {cardsContent} 
+        {/* <button onClick={drawTwo()}>Draw Two</button> */}
         ----<br/>
         Delete this spread
       </div>

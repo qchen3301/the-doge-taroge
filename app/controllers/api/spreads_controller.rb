@@ -14,6 +14,7 @@ class Api::SpreadsController < ApplicationController
     def create
         @user = User.find(params[:user_id])
         @spread = @user.spreads.create(spread_params)
+        
         render json: @spread
     end
 
@@ -28,6 +29,11 @@ class Api::SpreadsController < ApplicationController
     def destroy
         @spread = Spread.destroy(params[:id])
         render json: 200
+    end
+
+    def draw_two
+        @cards = Card.draw_two
+        render json: @cards
     end
 
     private
