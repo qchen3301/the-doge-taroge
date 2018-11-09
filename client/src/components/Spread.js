@@ -21,10 +21,6 @@ export default class Spread extends Component {
     return response.data
   }
 
-  drawTwo = async (userId, spreadId) => {
-    // event.preventDefault()
-    const newSpread = await axios.post(`/api/users/${userId}/spreads/${spreadId}/draw_two`, this.state.newCards)
-  }
   render() {
     const cardsContent = this.state.cards.map((card, i)=> {
       return(
@@ -38,7 +34,6 @@ export default class Spread extends Component {
       <div>
         Hello world from spread! Here are your cards: <br/>
         {cardsContent} 
-        {/* <button onClick={drawTwo()}>Draw Two</button> */}
         ----<br/>
         Delete this spread
       </div>

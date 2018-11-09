@@ -5,6 +5,12 @@ import {Link} from 'react-router-dom'
 
 export default class User extends Component {
     state = {
+        drawNumber: {
+            'two': 2,
+            'three': 3,
+            'four': 4,
+            'five': 5
+        },
         spreads: [],
         newSpread: {
             date: '',
@@ -15,7 +21,6 @@ export default class User extends Component {
     async componentDidMount(){
         const userId = this.props.match.params.id
         const spreads = await this.fetchSpreads(userId)
-        
         this.setState({spreads})
     }
 
@@ -40,6 +45,7 @@ export default class User extends Component {
         console.log(newSpread)
         this.setState({newSpread: newSpread.data})
         this.state.spreads.push(this.state.newSpread)
+        this.setState({spreads: this.state.spreads})
         }
 
   render() {
@@ -74,7 +80,10 @@ export default class User extends Component {
                 onChange={this.handleChange}
                 required
             /><br/>
-            <input type='submit' value='Create A Two-Card Spread'/>
+            <input type='submit' value='Draw A Two-Card Spread' onClick={()=>alert('You clicked two')}/> 
+            <input type='submit' value='Draw A Three-Card Spread' />
+            <input type='submit' value='Draw A Four-Card Spread' />
+            <input type='submit' value='Draw A Pentagram Spread' />
             <br/>---
         </form>
         <br/>
