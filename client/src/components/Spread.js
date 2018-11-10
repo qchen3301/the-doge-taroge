@@ -3,9 +3,7 @@ import axios from 'axios'
 
 export default class Spread extends Component {
   state = {
-    user: [],
-    cards: [],
-    newCards: []
+    cards: []
   }
 
   async componentDidMount(){
