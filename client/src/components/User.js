@@ -5,12 +5,7 @@ import {Link} from 'react-router-dom'
 
 export default class User extends Component {
     state = {
-        drawNumber: {
-            'two': 2,
-            'three': 3,
-            'four': 4,
-            'five': 5
-        },
+        drawNumber: ['draw_two', 'draw_three', 'draw_four', 'draw_five'],
         spreads: [],
         newSpread: {
             date: '',
@@ -36,17 +31,24 @@ export default class User extends Component {
     }
 
     handleSubmit = async (event) => {
-        const userId = this.props.match.params.id
         event.preventDefault()
+        const userId = this.props.match.params.id
+        const drawValue = this.state.drawNumber[this.switchDraw]
+        console.log(drawValue)
         // alert("New Spread!")
         const newSpread = await axios.post(`/api/users/${userId}/spreads`, this.state.newSpread)
-        const cards = await axios.get(`/api/users/${newSpread.data.user_id}/spreads/${newSpread.data.id}/draw_two`)
+        const cards = await axios.get(`/api/users/${newSpread.data.user_id}/spreads/${newSpread.data.id}/${drawValue}`)
+        console.log(drawValue)
         newSpread.data.cards = cards.data
         console.log(newSpread)
         this.setState({newSpread: newSpread.data})
         this.state.spreads.push(this.state.newSpread)
         this.setState({spreads: this.state.spreads})
         }
+
+    switchDraw = (drawNumber) => {
+        return (drawNumber)
+    }
 
   render() {
       const spreadsContent = this.state.spreads.map((spread, i) => {
@@ -80,10 +82,10 @@ export default class User extends Component {
                 onChange={this.handleChange}
                 required
             /><br/>
-            <input type='submit' value='Draw A Two-Card Spread' onClick={()=>alert('You clicked two')}/> 
-            <input type='submit' value='Draw A Three-Card Spread' />
-            <input type='submit' value='Draw A Four-Card Spread' />
-            <input type='submit' value='Draw A Pentagram Spread' />
+            <input type='submit' value='Draw A Two-Card Spread' onClick={()=>this.switchDraw(0)}/> 
+            <input type='submit' value='Draw A Three-Card Spread' onClick={()=>this.switchDraw(1)}/>
+            <input type='submit' value='Draw A Four-Card Spread' onClick={()=>this.switchDraw(2)}/>
+            <input type='submit' value='Draw A Pentagram Spread' onClick={()=>this.switchDraw(3)}/>
             <br/>---
         </form>
         <br/>
