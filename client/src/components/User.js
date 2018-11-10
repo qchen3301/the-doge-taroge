@@ -34,7 +34,7 @@ export default class User extends Component {
         event.preventDefault()
         const userId = this.props.match.params.id
         // console.log()
-        const drawValue = this.handleDraw
+        const drawValue = this.state.drawNumber
         // alert("New Spread!")
         const newSpread = await axios.post(`/api/users/${userId}/spreads`, this.state.newSpread)
         const cards = await axios.get(`/api/users/${newSpread.data.user_id}/spreads/${newSpread.data.id}/${drawValue}`)
@@ -47,7 +47,7 @@ export default class User extends Component {
     
 
     handleDraw = async (num) => {
-            this.setState(num)
+        this.setState({drawNumber: num})
     }
 
   render() {
@@ -65,7 +65,7 @@ export default class User extends Component {
         <br/>
         Create a new spread: <br/>
         ---<br/>
-        <form>
+        <form onSubmit = {this.handleSubmit}>
             <input 
                 type='text'
                 name='date'
