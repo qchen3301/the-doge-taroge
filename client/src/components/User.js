@@ -54,7 +54,7 @@ export default class User extends Component {
     }
 
     goBack = () => {
-        window.history.back()
+        this.props.history.goBack()
     }
 
   render() {

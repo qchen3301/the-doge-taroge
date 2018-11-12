@@ -29,7 +29,7 @@ export default class Spread extends Component {
   }
 
   goBack = () => {
-    window.history.back()
+    this.props.history.goBack()
   }
 
   render() {
