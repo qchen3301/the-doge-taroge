@@ -45,13 +45,13 @@ class Api::SpreadsController < ApplicationController
 
     def draw_four
         @spreads = Spread.find(params[:spread_id])
-        @cards = Card.draw_four
+        @cards = @spread.cards.draw_four
         render json: @cards
     end
 
     def draw_five
         @spreads = Spread.find(params[:spread_id])
-        @cards = Card.draw_five
+        @cards = @spread.cards.draw_five
         render json: @cards
     end
 

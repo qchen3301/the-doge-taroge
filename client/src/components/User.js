@@ -34,14 +34,18 @@ export default class User extends Component {
         event.preventDefault()
         const userId = this.props.match.params.id
         var drawValue = this.state.drawCommand
+        console.log("draw value is")
         console.log(drawValue)
         const newSpread = await axios.post(`/api/users/${userId}/spreads`, this.state.newSpread)
+        console.log("new spread data is ")
+        console.log(newSpread.data)
         const cards = await axios.get(`/api/users/${newSpread.data.user_id}/spreads/${newSpread.data.id}/${drawValue}`)
+        console.log("Card data is ")
         console.log(cards.data)
         newSpread.data.cards = cards.data
         this.setState({newSpread: newSpread.data})
-        this.state.spreads.push(this.state.newSpread)
-        this.setState({spreads: this.state.spreads})
+        // this.state.spreads.push(this.state.newSpread)
+        // this.setState({spreads: this.state.spreads})
     }
     
 
