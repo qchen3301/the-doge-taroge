@@ -28,6 +28,10 @@ export default class Spread extends Component {
     return response.data
   }
 
+  goBack = () => {
+    window.history.back()
+  }
+
   render() {
     const cardsContent = this.state.cards.map((card, i)=> {
       return(
@@ -45,7 +49,8 @@ export default class Spread extends Component {
         Here are your cards: <br/>
         {cardsContent} 
         ----<br/>
-        Delete this spread
+        Delete this spread <br/>
+        <button onClick={()=>{this.goBack()}}>Go Back To Spreads</button>
       </div>
     )
   }

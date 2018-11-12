@@ -44,13 +44,17 @@ export default class User extends Component {
         console.log(cards.data)
         newSpread.data.cards = cards.data
         this.setState({newSpread: newSpread.data})
-        // this.state.spreads.push(this.state.newSpread)
-        // this.setState({spreads: this.state.spreads})
+        this.state.spreads.push(this.state.newSpread)
+        this.setState({spreads: this.state.spreads})
     }
     
 
     handleDraw = async (drawCommand) => {
         this.setState({drawCommand})
+    }
+
+    goBack = () => {
+        window.history.back()
     }
 
   render() {
@@ -93,7 +97,8 @@ export default class User extends Component {
         </form>
         <br/>
         See your spreads: <br/>
-        {spreadsContent}
+        {spreadsContent} <br/>
+        <button onClick={()=>{this.goBack()}}>Go Back To Users</button>
       </div>
     )
     }
