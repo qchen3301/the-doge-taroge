@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 
 export default class User extends Component {
     state = {
-        drawNumber: '',
+        drawCommand: '',
         spreads: [],
         newSpread: {
             date: '',
@@ -33,21 +33,20 @@ export default class User extends Component {
     handleSubmit = async (event) => {
         event.preventDefault()
         const userId = this.props.match.params.id
-        // console.log()
-        const drawValue = this.state.drawNumber
-        // alert("New Spread!")
+        var drawValue = this.state.drawCommand
+        console.log(drawValue)
         const newSpread = await axios.post(`/api/users/${userId}/spreads`, this.state.newSpread)
         const cards = await axios.get(`/api/users/${newSpread.data.user_id}/spreads/${newSpread.data.id}/${drawValue}`)
+        console.log(cards.data)
         newSpread.data.cards = cards.data
-        // console.log(newSpread)
         this.setState({newSpread: newSpread.data})
         this.state.spreads.push(this.state.newSpread)
         this.setState({spreads: this.state.spreads})
     }
     
 
-    handleDraw = async (num) => {
-        this.setState({drawNumber: num})
+    handleDraw = async (drawCommand) => {
+        this.setState({drawCommand})
     }
 
   render() {

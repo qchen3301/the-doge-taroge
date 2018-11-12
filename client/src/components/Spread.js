@@ -3,6 +3,10 @@ import axios from 'axios'
 
 export default class Spread extends Component {
   state = {
+    spread: {
+      date:'', 
+      notes:'' 
+    },
     cards: []
   }
 
@@ -10,12 +14,17 @@ export default class Spread extends Component {
     const userId = this.props.match.params.userId
     const spreadId = this.props.match.params.id
     const cards = await this.fetchCards(userId, spreadId)
-
-    this.setState({cards})
+    const spread = await this.fetchSpread(userId,spreadId)
+    this.setState({cards, spread})
   }
 
   fetchCards = async (userId, spreadId) => {
     const response = await axios.get(`/api/users/${userId}/spreads/${spreadId}/cards`)
+    return response.data
+  }
+
+  fetchSpread = async (userId, spreadId) => {
+    const response = await axios.get(`/api/users/${userId}/spreads/${spreadId}`)
     return response.data
   }
 
@@ -30,7 +39,10 @@ export default class Spread extends Component {
     })
     return (
       <div>
-        Hello world from spread! Here are your cards: <br/>
+        <i>Hello world from spread!</i> <br/>
+        <i>Here is the date of your spread:</i> <u>{this.state.spread.date}</u> <br/>
+        <i>Here are the notes from your spread:</i> <u>{this.state.spread.notes}</u> <br/>
+        Here are your cards: <br/>
         {cardsContent} 
         ----<br/>
         Delete this spread
