@@ -1,7 +1,27 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
+import styled from 'styled-components'
 
+const StyledDiv = styled.div`
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'Arial';
+    text-align: center;
+`
+const TextH1 = styled.h1`
+    font-family: 'Comic Sans MS';
+    font-style: 'italic';
+    font-size: 10vh;
+`
+const TextH5 = styled.h5`
+    font-family: 'Arial';
+    font-style: italic;
+    font-size: 1vh;
+    text-align: center;
+`
 
 export default class User extends Component {
     state = {
@@ -68,30 +88,29 @@ export default class User extends Component {
       const spreadsContent = this.state.spreads.map((spread, i) => {
           return(
               <div key={i}>
-              <p>Date: <Link to={`/users/${this.props.match.params.id}/spreads/${spread.id}`}>{spread.created_at}</Link></p>
-              <u>Your notes on this spread:</u> <b>{spread.notes}</b>
+              <p><Link to={`/users/${this.props.match.params.id}/spreads/${spread.id}`}>{spread.created_at}</Link></p>
+              <TextH5>Notes</TextH5>
+              <TextH5>{spread.notes}</TextH5>
               </div>
           )
       })
     return (
-      <div>
-        <h1><i>S E E T H E D O G E</i></h1>
-        <h5><i>s e e t h e c o d e</i></h5>
-        <br/>
-        Create a new spread: <br/>
-        ---<br/>
+      <StyledDiv>
+        <TextH1>S E E T H E D O G E</TextH1>
+        <TextH5>s e e t h e c o d e</TextH5>
+       
         <form onSubmit = {this.handleSubmit}>
             <input type='submit' value='Draw A Two-Card Spread' onClick={()=>this.handleDraw('draw_two')} /> 
             <input type='submit' value='Draw A Three-Card Spread' onClick={()=>this.handleDraw('draw_three')} />
             <input type='submit' value='Draw A Four-Card Spread' onClick={()=>this.handleDraw('draw_four')}/>
             <input type='submit' value='Draw A Pentagram Spread' onClick={()=>this.handleDraw('draw_five')}/>
-            <br/>---
+          
         </form>
         <br/>
-        See your spreads: <br/>
+        Your Previous Spreads <br/>
         {spreadsContent} <br/>
         <button onClick={()=>{this.goBack()}}>Go Back To Users</button>
-      </div>
+      </StyledDiv>
     )
     }
 }

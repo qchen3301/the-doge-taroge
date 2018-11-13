@@ -1,5 +1,16 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import styled from 'styled-components'
+
+const StyledDiv = styled.div`
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'Comic Sans MS';
+    font-size: 5vh;
+`
+
 
 export default class CreateUser extends Component {
     state = {
@@ -23,8 +34,9 @@ export default class CreateUser extends Component {
 
   render() {
     return (
-      <div>
-        Hello from Create User!
+      <StyledDiv>
+          <p>Create.</p>
+          Uh. User?
         <form onSubmit={this.handleSubmit}>
             <input 
                 type='text'
@@ -33,10 +45,10 @@ export default class CreateUser extends Component {
                 value={this.state.newUser.name}
                 onChange={this.handleChange}
                 required
-            />
-            <input type='submit' value='Create New User' />
+            /><br/>
+            <input type='submit' value='Okay Okay Okay Okay Okay' />
         </form>
-      </div>
+      </StyledDiv>
     )
   }
 }
