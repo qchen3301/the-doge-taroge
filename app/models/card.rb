@@ -3,11 +3,16 @@ class Card < ApplicationRecord
   include HTTParty
   base_uri 'https://rws-cards-api.herokuapp.com/api/v1/cards'
 
+  # this method returns either true/false for the 'reversed' column in the Card table
+  def reversed
+    [true,false].sample
+  end
+
   def self.draw_two
     response = OpenStruct.new(get('/random?n=2'))
     Card.create!([
-      {card_name: response.cards[0]["name"], arcana: response.cards[0]["type"]},
-      {card_name: response.cards[1]["name"], arcana: response.cards[1]["type"]}
+      {card_name: response.cards[0]["name"], arcana: response.cards[0]["type"], value: response.cards[0]["value_int"], reversed: self.reversed},
+      {card_name: response.cards[1]["name"], arcana: response.cards[1]["type"], value: response.cards[0]["value_int"], reversed: self.reversed}
     ])
   end
 

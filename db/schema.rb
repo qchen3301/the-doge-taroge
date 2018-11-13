@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 2018_11_05_212709) do
     t.bigint "spread_id"
     t.string "card_name"
     t.string "arcana"
+    t.boolean "reversed"
+    t.bigint "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["spread_id"], name: "index_cards_on_spread_id"
