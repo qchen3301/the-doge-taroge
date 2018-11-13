@@ -9,11 +9,12 @@ const TarotStyled = styled.div`
   justify-content: center;
   font-family: 'Comic Sans MS';
   font-size: 3vh;
+  text-shadow: 2px 2px #FF0000;
   border-style: double;
   border-radius: 45px;
   width: 30%;
   height: 75%;
-  background-image: url("../assets/doge.jpg");
+  background-image: url("https://raw.githubusercontent.com/qchen3301/the-doge-taroge/master/assets/doge.jpg");
   padding: 5%;
 `
 const StyledDiv = styled.div`
