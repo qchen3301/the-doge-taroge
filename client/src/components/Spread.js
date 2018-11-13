@@ -28,6 +28,13 @@ export default class Spread extends Component {
     return response.data
   }
 
+  handleDelete = async () => {
+    const userId = this.state.spread.user_id
+    const spreadId = this.state.spread.id
+    await axios.delete(`/api/users/${userId}/spreads/${spreadId}`)
+    this.props.history.goBack()
+  } 
+
   goBack = () => {
     this.props.history.goBack()
   }
@@ -38,6 +45,7 @@ export default class Spread extends Component {
         <div key={i}>
           <h2>{card.card_name}</h2>
           <h3>{card.arcana} arcana</h3>
+          {/* if the card has been "drawn" "reversed" this ternary will account for that column's boolean being true */}
           {card.reversed ?
             (<h1><u><b><i>REVERSED!!!!!</i></b></u></h1>) 
             : ''}
@@ -52,7 +60,7 @@ export default class Spread extends Component {
         Here are your cards: <br/>
         {cardsContent} 
         ----<br/>
-        Delete this spread <br/>
+        <button onClick={()=>{this.handleDelete()}}>Delete this spread</button> <br/>
         <button onClick={()=>{this.goBack()}}>Go Back To Spreads</button>
       </div>
     )
