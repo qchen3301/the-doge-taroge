@@ -3,7 +3,7 @@
 
 ### Live Site
 
-Live Site(https://doge-taroge.herokuapp.com)
+[Live Site](https://doge-taroge.herokuapp.com)
 
 ### Other Stuff
 
