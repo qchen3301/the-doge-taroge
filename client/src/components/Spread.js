@@ -38,6 +38,9 @@ export default class Spread extends Component {
         <div key={i}>
           <h2>{card.card_name}</h2>
           <h3>{card.arcana} arcana</h3>
+          {card.reversed ?
+            (<h1><u><b><i>REVERSED!!!!!</i></b></u></h1>) 
+            : ''}
         </div>
       )
     })
