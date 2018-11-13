@@ -16,6 +16,7 @@ export default class App extends Component {
            <Route exact path='/users/:id' component={User}/>
            <Route exact path='/users/:userId/spreads/:id' component={Spread}/>
            <Route exact path='/createUser' component={CreateUser}/>
+           <Route path='/' component={Users}/>
          </Switch>
        </Router>
 
