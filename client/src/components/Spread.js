@@ -42,8 +42,8 @@ export default class Spread extends Component {
     spread[event.target.name] = event.target.value
     this.setState({spread})
   }
+ 
   // goBack function will save any notes made to this spread
-
   handleUpdate = async () => {
     const userId = this.state.spread.user_id
     const spreadId = this.state.spread.id
@@ -51,6 +51,7 @@ export default class Spread extends Component {
     const spread = this.state.spread
     this.setState({spread})
   }
+  
   goBack = () => {
     this.handleUpdate()
     this.props.history.goBack()

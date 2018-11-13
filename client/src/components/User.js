@@ -68,14 +68,15 @@ export default class User extends Component {
       const spreadsContent = this.state.spreads.map((spread, i) => {
           return(
               <div key={i}>
-              <p><Link to={`/users/${this.props.match.params.id}/spreads/${spread.id}`}>{spread.created_at}</Link></p>
-              <p>{spread.notes}</p>
+              <p>Date: <Link to={`/users/${this.props.match.params.id}/spreads/${spread.id}`}>{spread.created_at}</Link></p>
+              <u>Your notes on this spread:</u> <b>{spread.notes}</b>
               </div>
           )
       })
     return (
       <div>
-        Hello from single user!
+        <h1><i>S E E T H E D O G E</i></h1>
+        <h5><i>s e e t h e c o d e</i></h5>
         <br/>
         Create a new spread: <br/>
         ---<br/>
