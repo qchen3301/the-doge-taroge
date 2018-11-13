@@ -68,7 +68,7 @@ export default class User extends Component {
       const spreadsContent = this.state.spreads.map((spread, i) => {
           return(
               <div key={i}>
-              <p><Link to={`/users/${this.props.match.params.id}/spreads/${spread.id}`}>{spread.date}</Link></p>
+              <p><Link to={`/users/${this.props.match.params.id}/spreads/${spread.id}`}>{spread.created_at}</Link></p>
               <p>{spread.notes}</p>
               </div>
           )
@@ -80,22 +80,6 @@ export default class User extends Component {
         Create a new spread: <br/>
         ---<br/>
         <form onSubmit = {this.handleSubmit}>
-            <input 
-                type='text'
-                name='date'
-                placeholder='Enter the date'
-                value={this.state.newSpread.date}
-                onChange={this.handleChange}
-                required
-            /><br/>
-            <input 
-                type='text'
-                name='notes'
-                placeholder='Add some notes to this spread'
-                value={this.state.newSpread.notes}
-                onChange={this.handleChange}
-                required
-            /><br/>
             <input type='submit' value='Draw A Two-Card Spread' onClick={()=>this.handleDraw('draw_two')} /> 
             <input type='submit' value='Draw A Three-Card Spread' onClick={()=>this.handleDraw('draw_three')} />
             <input type='submit' value='Draw A Four-Card Spread' onClick={()=>this.handleDraw('draw_four')}/>

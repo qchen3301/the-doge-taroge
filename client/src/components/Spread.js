@@ -5,8 +5,10 @@ export default class Spread extends Component {
   state = {
     spread: {
       date:'', 
-      notes:'' 
+      notes:'',
+      created_at: '' 
     },
+    newNote:'',
     cards: []
   }
 
@@ -35,7 +37,22 @@ export default class Spread extends Component {
     this.props.history.goBack()
   } 
 
+  handleChange = (event) => {
+    const spread = {...this.state.spread}
+    spread[event.target.name] = event.target.value
+    this.setState({spread})
+  }
+  // goBack function will save any notes made to this spread
+
+  handleUpdate = async () => {
+    const userId = this.state.spread.user_id
+    const spreadId = this.state.spread.id
+    await axios.patch(`/api/users/${userId}/spreads/${spreadId}`, this.state.spread)
+    const spread = this.state.spread
+    this.setState({spread})
+  }
   goBack = () => {
+    this.handleUpdate()
     this.props.history.goBack()
   }
 
@@ -55,10 +72,19 @@ export default class Spread extends Component {
     return (
       <div>
         <i>Hello world from spread!</i> <br/>
-        <i>Here is the date of your spread:</i> <u>{this.state.spread.date}</u> <br/>
-        <i>Here are the notes from your spread:</i> <u>{this.state.spread.notes}</u> <br/>
+        <i>Here is the date of your spread:</i> <u>{this.state.spread.created_at}</u> <br/>
         Here are your cards: <br/>
         {cardsContent} 
+        ----<br/>
+        Dang that's an interesting spread. Care to add some notes about it? <br/>
+        <textarea 
+          rows="4" 
+          cols="50" 
+          name="notes"
+          value={this.state.spread.notes}
+          onChange={this.handleChange}  
+          placeholder={this.state.spread.notes}>
+          </textarea><br/>
         ----<br/>
         <button onClick={()=>{this.handleDelete()}}>Delete this spread</button> <br/>
         <button onClick={()=>{this.goBack()}}>Go Back To Spreads</button>
