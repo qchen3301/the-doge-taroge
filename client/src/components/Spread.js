@@ -13,7 +13,7 @@ const TarotStyled = styled.div`
   border-radius: 45px;
   width: 30%;
   height: 75%;
-  background-color: lightblue;
+  background-image: url("../assets/doge.jpg");
   padding: 5%;
 `
 const StyledDiv = styled.div`
